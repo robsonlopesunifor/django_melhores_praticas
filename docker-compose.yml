@@ -1,0 +1,19 @@
+# versao do docker-compose
+version: '3.3'
+
+# services e o nome 
+services:
+
+  web:
+    # vai procurar o Dokerfile no diretorio atual
+    build: .
+    # depois de carregar o ambiente gerado pelo dokerfile
+    # ele executa o comando runserver 
+    command: python /code/manage.py runserver 0.0.0.0:8008
+    # volumes faz o conteiner ter acesso aos arquivode de fora
+    # o que voce fizer na pasta de fora reflete na pasta de dentro
+    volumes:
+      - .:/code
+    # porta aberta para o munto esterno 
+    ports:
+      - 8008:8008
